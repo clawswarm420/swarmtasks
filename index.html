@@ -646,13 +646,23 @@ function updatePayBtn() {
   btn.textContent = selectedPlan ? `💳 Pay $${selectedPlan.price} & Start` : '💳 Pay & Start';
 }
 
+const STRIPE_LINKS = {
+  10: 'https://buy.stripe.com/fZu7sNcqt1ID0qEeGXc3m00',
+  30: 'https://buy.stripe.com/5kQdRbduxgDxfly2Yfc3m01',
+  60: 'https://buy.stripe.com/aFa28t3TX2MH4GU1Ubc3m02',
+};
+
 function handlePay() {
   if (!selectedPlan) return;
   const desc = document.getElementById('taskDesc').value.trim();
   const email = document.getElementById('taskEmail').value.trim();
   if (!desc) return alert('Please describe your task');
   if (!email) return alert('Please enter your email');
-  const msg = encodeURIComponent(`🐙 SwarmTasks Order\nDuration: ${selectedPlan.mins} min ($${selectedPlan.price})\nEmail: ${email}\nTask: ${desc}`);
+  // Open Stripe checkout
+  const stripeUrl = STRIPE_LINKS[selectedPlan.mins];
+  if (stripeUrl) window.open(stripeUrl, '_blank');
+  // Notify via Telegram with task details
+  const msg = encodeURIComponent(`🐙 SwarmTasks Order (paid via Stripe)\nDuration: ${selectedPlan.mins} min ($${selectedPlan.price})\nEmail: ${email}\nTask: ${desc}`);
   window.open(`https://t.me/Satoshisnuts?text=${msg}`, '_blank');
   closeOrder();
 }
