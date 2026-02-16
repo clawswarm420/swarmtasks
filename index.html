@@ -368,10 +368,7 @@
         <div class="mins">60</div><div class="label">minutes</div><div class="price">$30</div>
       </div>
     </div>
-    <label>Describe your task:</label>
-    <textarea id="taskDesc" placeholder="e.g., Scrape pricing data from 50 competitor websites..."></textarea>
-    <label>Your email (for delivery):</label>
-    <input type="email" id="taskEmail" placeholder="you@example.com">
+    <p style="font-size:13px;color:var(--text-muted);margin-top:12px;">📝 You'll describe your task and enter your email on the secure Stripe checkout page. Your swarm starts automatically after payment.</p>
     <div class="btn-row">
       <button class="btn-cancel" onclick="closeOrder()">Cancel</button>
       <button class="btn-pay" id="payBtn" disabled onclick="handlePay()">💳 Pay & Start</button>
@@ -647,23 +644,16 @@ function updatePayBtn() {
 }
 
 const STRIPE_LINKS = {
-  10: 'https://buy.stripe.com/fZu7sNcqt1ID0qEeGXc3m00',
-  30: 'https://buy.stripe.com/5kQdRbduxgDxfly2Yfc3m01',
-  60: 'https://buy.stripe.com/aFa28t3TX2MH4GU1Ubc3m02',
+  10: 'https://buy.stripe.com/cNi00lfCF5YTgpCeGXc3m03',
+  30: 'https://buy.stripe.com/3cI5kFgGJ1IDc9m7evc3m04',
+  60: 'https://buy.stripe.com/fZudRbfCF0Ezc9mbuLc3m05',
 };
 
 function handlePay() {
   if (!selectedPlan) return;
-  const desc = document.getElementById('taskDesc').value.trim();
-  const email = document.getElementById('taskEmail').value.trim();
-  if (!desc) return alert('Please describe your task');
-  if (!email) return alert('Please enter your email');
-  // Open Stripe checkout
+  // Open Stripe checkout (task description + email collected there)
   const stripeUrl = STRIPE_LINKS[selectedPlan.mins];
-  if (stripeUrl) window.open(stripeUrl, '_blank');
-  // Notify via Telegram with task details
-  const msg = encodeURIComponent(`🐙 SwarmTasks Order (paid via Stripe)\nDuration: ${selectedPlan.mins} min ($${selectedPlan.price})\nEmail: ${email}\nTask: ${desc}`);
-  window.open(`https://t.me/Satoshisnuts?text=${msg}`, '_blank');
+  if (stripeUrl) window.location.href = stripeUrl;
   closeOrder();
 }
 
