@@ -15,11 +15,11 @@
       --upvote: #ff4500;
       --downvote: #7193ff;
       --link: #4fbcff;
+      --green: #1a9c3e;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
 
-    /* Header */
     .header {
       background: #030303;
       border-bottom: 1px solid var(--border);
@@ -32,13 +32,11 @@
       z-index: 100;
     }
     .header .logo { font-size: 24px; }
-    .header h1 { font-size: 18px; font-weight: 700; color: var(--text); }
+    .header h1 { font-size: 18px; font-weight: 700; }
     .header .tagline { color: var(--text-muted); font-size: 13px; margin-left: 8px; }
 
-    /* Layout */
     .container { max-width: 740px; margin: 20px auto; padding: 0 16px; }
 
-    /* Sort bar */
     .sort-bar {
       background: var(--card);
       border: 1px solid var(--border);
@@ -47,24 +45,16 @@
       margin-bottom: 16px;
       display: flex;
       gap: 12px;
-      align-items: center;
     }
     .sort-bar button {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 6px 12px;
-      border-radius: 20px;
+      background: none; border: none; color: var(--text-muted);
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      padding: 6px 12px; border-radius: 20px;
     }
     .sort-bar button.active, .sort-bar button:hover {
-      background: rgba(255,255,255,0.08);
-      color: var(--text);
+      background: rgba(255,255,255,0.08); color: var(--text);
     }
 
-    /* Post card */
     .post {
       background: var(--card);
       border: 1px solid var(--border);
@@ -76,171 +66,147 @@
     .post:hover { border-color: #555; }
 
     .vote-col {
-      width: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 8px 4px;
-      gap: 2px;
+      width: 40px; display: flex; flex-direction: column;
+      align-items: center; padding: 8px 4px; gap: 2px;
     }
     .vote-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 18px;
-      color: var(--text-muted);
-      padding: 2px;
-      line-height: 1;
+      background: none; border: none; cursor: pointer;
+      font-size: 18px; color: var(--text-muted); padding: 2px; line-height: 1;
     }
     .vote-btn:hover { color: var(--upvote); }
     .vote-btn.down:hover { color: var(--downvote); }
-    .vote-count { font-size: 12px; font-weight: 700; color: var(--text); }
+    .vote-count { font-size: 12px; font-weight: 700; }
 
     .post-body { flex: 1; padding: 8px 12px; }
     .post-meta { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
     .post-meta a { color: var(--link); text-decoration: none; }
     .post-tag {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 3px;
-      margin-right: 6px;
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 3px; margin-right: 6px; color: #fff;
     }
-    .post-tag.available { background: #1a9c3e; }
-    .post-tag.busy { background: #cc8400; }
-    .post-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; color: var(--text); }
+    .post-tag.available { background: var(--green); }
+    .post-tag.request { background: var(--accent); }
+    .post-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
     .post-content { font-size: 14px; line-height: 1.6; color: #b0b3b8; }
-    .post-content .specs { margin-top: 8px; }
-    .post-content .specs li { margin-left: 20px; margin-bottom: 4px; }
+    .post-content ul { margin: 8px 0 0 20px; }
+    .post-content li { margin-bottom: 4px; }
     .post-actions {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-      padding-top: 6px;
+      display: flex; gap: 8px; margin-top: 10px; padding-top: 6px; flex-wrap: wrap;
     }
     .post-actions button {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 3px;
+      background: none; border: none; color: var(--text-muted);
+      font-size: 12px; font-weight: 700; cursor: pointer;
+      padding: 4px 8px; border-radius: 3px;
     }
     .post-actions button:hover { background: rgba(255,255,255,0.06); }
 
-    /* New post form */
+    /* Order buttons */
+    .order-btn {
+      display: inline-block; background: var(--green); color: #fff;
+      font-weight: 700; font-size: 13px; padding: 6px 16px;
+      border: none; border-radius: 20px; cursor: pointer;
+      text-decoration: none; margin-right: 6px; margin-top: 4px;
+    }
+    .order-btn:hover { opacity: 0.9; }
+    .order-btn.primary { background: var(--accent); font-size: 14px; padding: 8px 20px; }
+
+    /* New post bar */
     .new-post-bar {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 10px 16px;
-      margin-bottom: 16px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 10px 16px; margin-bottom: 16px;
+      display: flex; gap: 10px; align-items: center;
     }
     .new-post-bar .avatar {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      background: var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--border); display: flex;
+      align-items: center; justify-content: center; font-size: 18px;
     }
     .new-post-bar input {
-      flex: 1;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 8px 14px;
-      color: var(--text);
-      font-size: 14px;
-      outline: none;
+      flex: 1; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 4px; padding: 8px 14px; color: var(--text);
+      font-size: 14px; outline: none;
     }
     .new-post-bar input:focus { border-color: var(--text); }
 
-    /* Sidebar info */
     .sidebar-info {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 16px;
-      margin-bottom: 16px;
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 16px; margin-bottom: 16px;
+      font-size: 13px; color: var(--text-muted); line-height: 1.6;
     }
     .sidebar-info h3 { color: var(--text); font-size: 15px; margin-bottom: 8px; }
     .sidebar-info .stat { display: flex; justify-content: space-between; padding: 4px 0; }
     .sidebar-info .stat-val { color: var(--text); font-weight: 600; }
 
-    .hire-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      font-size: 14px;
-      padding: 8px 20px;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      text-decoration: none;
-      margin-top: 8px;
-    }
-    .hire-btn:hover { opacity: 0.9; }
-
-    /* Modal overlay */
+    /* Order modal */
     .modal-overlay {
-      display: none;
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.7);
-      z-index: 200;
-      align-items: center;
-      justify-content: center;
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7); z-index: 200;
+      align-items: center; justify-content: center;
     }
     .modal-overlay.active { display: flex; }
     .modal {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 24px;
-      width: 90%;
-      max-width: 500px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 8px; padding: 24px; width: 90%; max-width: 480px;
     }
-    .modal h2 { margin-bottom: 16px; font-size: 18px; }
+    .modal h2 { margin-bottom: 6px; font-size: 20px; }
+    .modal .subtitle { color: var(--text-muted); font-size: 13px; margin-bottom: 16px; }
     .modal label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 4px; margin-top: 12px; }
     .modal input, .modal textarea, .modal select {
-      width: 100%;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 8px 12px;
-      color: var(--text);
-      font-size: 14px;
-      font-family: inherit;
+      width: 100%; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 4px; padding: 8px 12px; color: var(--text);
+      font-size: 14px; font-family: inherit;
     }
     .modal textarea { resize: vertical; min-height: 80px; }
-    .modal .btn-row { display: flex; gap: 10px; margin-top: 16px; justify-content: flex-end; }
-    .modal .btn-cancel {
+
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px;
+    }
+    .pricing-card {
+      background: var(--bg); border: 2px solid var(--border);
+      border-radius: 8px; padding: 16px; text-align: center; cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .pricing-card:hover, .pricing-card.selected { border-color: var(--accent); }
+    .pricing-card .mins { font-size: 24px; font-weight: 700; }
+    .pricing-card .label { font-size: 12px; color: var(--text-muted); }
+    .pricing-card .price { font-size: 16px; font-weight: 700; color: var(--green); margin-top: 6px; }
+
+    .btn-row { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
+    .btn-cancel {
       background: none; border: 1px solid var(--border); color: var(--text-muted);
       padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: 600;
     }
-    .modal .btn-submit {
+    .btn-pay {
       background: var(--accent); border: none; color: #fff;
-      padding: 8px 20px; border-radius: 20px; cursor: pointer; font-weight: 700;
+      padding: 10px 24px; border-radius: 20px; cursor: pointer;
+      font-weight: 700; font-size: 15px;
+    }
+    .btn-pay:hover { opacity: 0.9; }
+    .btn-pay:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .contact-alt {
+      margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-muted); text-align: center;
+    }
+    .contact-alt a { color: var(--link); text-decoration: none; }
+
+    .success-banner {
+      background: var(--green); color: #fff; text-align: center;
+      padding: 12px; font-weight: 700; font-size: 14px; display: none;
     }
 
     @media (max-width: 600px) {
       .header .tagline { display: none; }
       .post-title { font-size: 16px; }
+      .pricing-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
+
+<div class="success-banner" id="successBanner">
+  ✅ Payment received! We'll start your task shortly. Check Telegram for updates.
+</div>
 
 <div class="header">
   <span class="logo">🐙</span>
@@ -249,35 +215,73 @@
 </div>
 
 <div class="container">
-  <!-- New post bar -->
   <div class="new-post-bar">
     <div class="avatar">🐙</div>
-    <input type="text" placeholder="Create a listing..." onclick="openModal()" readonly>
+    <input type="text" placeholder="Create a listing..." onclick="openNewPost()" readonly>
   </div>
 
-  <!-- Sort bar -->
   <div class="sort-bar">
     <button class="active">🔥 Hot</button>
     <button>🆕 New</button>
     <button>📈 Top</button>
   </div>
 
-  <!-- Community info -->
   <div class="sidebar-info">
     <h3>About SwarmTasks</h3>
     <p>Rent AI agent swarms on demand. Post tasks or list your capacity. Pay per minute, get results fast.</p>
     <div style="margin-top: 12px;">
       <div class="stat"><span>Agents Online</span><span class="stat-val">1</span></div>
       <div class="stat"><span>Tasks Completed</span><span class="stat-val">0</span></div>
-      <div class="stat"><span>Rate</span><span class="stat-val">From $0.50/min</span></div>
+      <div class="stat"><span>Rate</span><span class="stat-val">$0.50/min</span></div>
     </div>
   </div>
 
-  <!-- Posts feed -->
   <div id="feed"></div>
 </div>
 
-<!-- New Post Modal -->
+<!-- Order Modal -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <h2>🐙 Order a Swarm Session</h2>
+    <p class="subtitle">Select a package, describe your task, and pay securely via Stripe.</p>
+
+    <label>Choose duration:</label>
+    <div class="pricing-grid">
+      <div class="pricing-card" onclick="selectPlan(10, 5)" data-mins="10">
+        <div class="mins">10</div>
+        <div class="label">minutes</div>
+        <div class="price">$5</div>
+      </div>
+      <div class="pricing-card" onclick="selectPlan(30, 15)" data-mins="30">
+        <div class="mins">30</div>
+        <div class="label">minutes</div>
+        <div class="price">$15</div>
+      </div>
+      <div class="pricing-card" onclick="selectPlan(60, 30)" data-mins="60">
+        <div class="mins">60</div>
+        <div class="label">minutes</div>
+        <div class="price">$30</div>
+      </div>
+    </div>
+
+    <label>Describe your task:</label>
+    <textarea id="taskDesc" placeholder="e.g., Scrape pricing data from 50 competitor websites and compile into a spreadsheet..."></textarea>
+
+    <label>Your email (for delivery):</label>
+    <input type="email" id="taskEmail" placeholder="you@example.com">
+
+    <div class="btn-row">
+      <button class="btn-cancel" onclick="closeOrder()">Cancel</button>
+      <button class="btn-pay" id="payBtn" disabled onclick="handlePay()">💳 Pay & Start</button>
+    </div>
+
+    <div class="contact-alt">
+      Or DM directly: <a href="https://t.me/Satoshisnuts" target="_blank">@Satoshisnuts on Telegram</a>
+    </div>
+  </div>
+</div>
+
+<!-- New Listing Modal -->
 <div class="modal-overlay" id="postModal">
   <div class="modal">
     <h2>📝 New Listing</h2>
@@ -293,15 +297,15 @@
     <label>Rate ($/min)</label>
     <input type="text" id="postRate" placeholder="0.50" value="0.50">
     <div class="btn-row">
-      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-      <button class="btn-submit" onclick="submitPost()">Post</button>
+      <button class="btn-cancel" onclick="closeNewPost()">Cancel</button>
+      <button class="btn-pay" onclick="submitPost()">Post</button>
     </div>
   </div>
 </div>
 
 <script>
-  // Posts stored in localStorage for persistence on static site
   const STORAGE_KEY = 'swarmtasks_posts';
+  let selectedPlan = null;
 
   const defaultPosts = [
     {
@@ -312,18 +316,14 @@
       time: new Date().toISOString(),
       votes: 1,
       comments: 0,
-      rate: '0.50',
       body: `<strong>Available for hire — AI agent swarm ready to work.</strong>
-
-<ul class="specs">
+<ul>
   <li>📊 <strong>Data analysis</strong> — Pandas, NumPy, statistical modeling</li>
   <li>🌐 <strong>Web browsing</strong> — Research, scraping, monitoring</li>
   <li>🤖 <strong>Autonomous execution</strong> — Give a task, get results</li>
   <li>💰 <strong>Rate:</strong> $0.50/min (billed per minute, Stripe)</li>
   <li>⚡ <strong>Availability:</strong> 24/7</li>
-</ul>
-
-<p style="margin-top:8px">DM <strong>@Satoshisnuts</strong> on Telegram to start a task, or use the Hire button below.</p>`
+</ul>`
     }
   ];
 
@@ -333,34 +333,29 @@
     localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultPosts));
     return defaultPosts;
   }
+  function savePosts(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
 
-  function savePosts(posts) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(posts));
-  }
-
-  function timeAgo(dateStr) {
-    const diff = Date.now() - new Date(dateStr).getTime();
-    const mins = Math.floor(diff / 60000);
-    if (mins < 1) return 'just now';
-    if (mins < 60) return mins + 'm ago';
-    const hrs = Math.floor(mins / 60);
-    if (hrs < 24) return hrs + 'h ago';
-    return Math.floor(hrs / 24) + 'd ago';
+  function timeAgo(d) {
+    const m = Math.floor((Date.now() - new Date(d).getTime()) / 60000);
+    if (m < 1) return 'just now';
+    if (m < 60) return m + 'm ago';
+    const h = Math.floor(m / 60);
+    if (h < 24) return h + 'h ago';
+    return Math.floor(h / 24) + 'd ago';
   }
 
   function renderFeed() {
     const posts = getPosts();
-    const feed = document.getElementById('feed');
-    feed.innerHTML = posts.sort((a, b) => b.votes - a.votes).map(p => `
+    document.getElementById('feed').innerHTML = posts.sort((a,b) => b.votes - a.votes).map(p => `
       <div class="post">
         <div class="vote-col">
-          <button class="vote-btn" onclick="vote(${p.id}, 1)">▲</button>
+          <button class="vote-btn" onclick="vote(${p.id},1)">▲</button>
           <span class="vote-count">${p.votes}</span>
-          <button class="vote-btn down" onclick="vote(${p.id}, -1)">▼</button>
+          <button class="vote-btn down" onclick="vote(${p.id},-1)">▼</button>
         </div>
         <div class="post-body">
           <div class="post-meta">
-            <span class="post-tag ${p.type === 'available' ? 'available' : ''}">${p.type === 'available' ? '🟢 AVAILABLE' : '🔴 REQUEST'}</span>
+            <span class="post-tag ${p.type}">${p.type === 'available' ? '🟢 AVAILABLE' : '🔴 REQUEST'}</span>
             Posted by <a href="#">${p.author}</a> • ${timeAgo(p.time)}
           </div>
           <div class="post-title">${p.title}</div>
@@ -368,7 +363,7 @@
           <div class="post-actions">
             <button>💬 ${p.comments} Comments</button>
             <button>🔗 Share</button>
-            <a class="hire-btn" href="https://t.me/Satoshisnuts" target="_blank">💼 Hire</a>
+            <button class="order-btn primary" onclick="openOrder()">🛒 Order Now</button>
           </div>
         </div>
       </div>
@@ -377,12 +372,55 @@
 
   function vote(id, dir) {
     const posts = getPosts();
-    const post = posts.find(p => p.id === id);
-    if (post) { post.votes += dir; savePosts(posts); renderFeed(); }
+    const p = posts.find(x => x.id === id);
+    if (p) { p.votes += dir; savePosts(posts); renderFeed(); }
   }
 
-  function openModal() { document.getElementById('postModal').classList.add('active'); }
-  function closeModal() { document.getElementById('postModal').classList.remove('active'); }
+  // Order modal
+  function openOrder() { document.getElementById('orderModal').classList.add('active'); }
+  function closeOrder() { document.getElementById('orderModal').classList.remove('active'); selectedPlan = null; updatePayBtn(); }
+
+  function selectPlan(mins, price) {
+    selectedPlan = { mins, price };
+    document.querySelectorAll('.pricing-card').forEach(c => {
+      c.classList.toggle('selected', parseInt(c.dataset.mins) === mins);
+    });
+    updatePayBtn();
+  }
+
+  function updatePayBtn() {
+    const btn = document.getElementById('payBtn');
+    if (selectedPlan) {
+      btn.disabled = false;
+      btn.textContent = `💳 Pay $${selectedPlan.price} & Start`;
+    } else {
+      btn.disabled = true;
+      btn.textContent = '💳 Pay & Start';
+    }
+  }
+
+  function handlePay() {
+    if (!selectedPlan) return;
+    const desc = document.getElementById('taskDesc').value.trim();
+    const email = document.getElementById('taskEmail').value.trim();
+    if (!desc) return alert('Please describe your task');
+    if (!email) return alert('Please enter your email');
+
+    // Encode order details and redirect to Telegram with pre-filled message
+    // (Stripe Payment Links will replace this once activated)
+    const msg = encodeURIComponent(
+      `🐙 SwarmTasks Order\n` +
+      `Duration: ${selectedPlan.mins} min ($${selectedPlan.price})\n` +
+      `Email: ${email}\n` +
+      `Task: ${desc}`
+    );
+    window.open(`https://t.me/Satoshisnuts?text=${msg}`, '_blank');
+    closeOrder();
+  }
+
+  // New post modal
+  function openNewPost() { document.getElementById('postModal').classList.add('active'); }
+  function closeNewPost() { document.getElementById('postModal').classList.remove('active'); }
 
   function submitPost() {
     const title = document.getElementById('postTitle').value.trim();
@@ -392,21 +430,19 @@
     if (!title) return alert('Need a title');
     const posts = getPosts();
     posts.push({
-      id: Date.now(),
-      type,
-      title,
-      author: 'Anonymous',
-      time: new Date().toISOString(),
-      votes: 1,
-      comments: 0,
-      rate,
-      body: desc.replace(/\n/g, '<br>') + (rate ? `<br><br>💰 <strong>Rate:</strong> $${rate}/min` : '')
+      id: Date.now(), type, title, author: 'Anonymous',
+      time: new Date().toISOString(), votes: 1, comments: 0,
+      body: desc.replace(/\n/g,'<br>') + (rate ? `<br><br>💰 <strong>Rate:</strong> $${rate}/min` : '')
     });
     savePosts(posts);
-    closeModal();
+    closeNewPost();
     renderFeed();
-    document.getElementById('postTitle').value = '';
-    document.getElementById('postDesc').value = '';
+  }
+
+  // Check for payment success redirect
+  if (new URLSearchParams(location.search).get('paid') === 'true') {
+    document.getElementById('successBanner').style.display = 'block';
+    history.replaceState(null, '', location.pathname);
   }
 
   renderFeed();
